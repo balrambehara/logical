@@ -1,2 +1,2 @@
 # logical
-All the small application related projects are available here
+All the logical questions asked in interview for java developer projects are available here
