@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Module Score Calulation</title>
+</head>
+
+<body>
+<div id="module_marks" style="margin:210px 310px 100px 620px">
+
+    <form onsubmit="myFunction()" method="post">
+        <h2>Module Score Calculation</h2>
+    Enter Employee Number:<input type="number" min="100000" max="999999" maxlength="6" id="employee_num" name="empnum" required><br>
+    Enter Employee Name:<input type="text" id="employee_name" pattern="[A-Za-z]{30}" name="empname" required><br>
+
+      Choose Domain:<select id="domainselect" name="domainselect" onchange="marks(this.id,'moduleselect')" required>
+        <option value="">Select Domain</option>
+        <option value="JEE">JEE</option>
+        <option value=".NET">.NET</option>
+
+    </select><br>
+        <hr>
+    Choose Module:<select id="moduleselect" name="moduleselect" required>
+        <option value=""></option>
+
+    </select>
+    <hr/>
+
+    </select><br>
+    Enter MPT Marks:<input type="number" min="0" max="70" maxlength="2" id="mptmarks" required><br>
+    Enter MTT Marks:<input type="number" min="0" max="64" maxlength="2" id="mttmarks" required><br>
+    Enter Assignment Marks:<input type="number" min="0" max="100" maxlength="3" id="assgnmarks" required><br>
+        <input type="submit" value="Calculate Module Score" >&nbsp;
+
+    </form>
+</div>
+
+<style>
+    body{
+        border:4px solid black;
+        border-radius: 5px;
+        padding:65px;
+        font-size:15px;
+        background-color: lightblue;
+        margin:3px;
+    }
+</style>
+<script type="text/javascript">
+    function myFunction() {
+        var x=parseInt(document.getElementById("mptmarks").value);
+        var y=parseInt(document.getElementById("mttmarks").value);
+        var z=parseInt(document.getElementById("assgnmarks").value);
+        var a=(((x/70)*0.7)+((y/64)*0.15)+((z/100)*0.15))*100;
+	var n = a.toFixed(2);
+       if(a<60)
+	alert("The total marks of user with mpt, mtt and Assignment marks is:"+n+"%." +" User failed.");
+	else
+	alert("The total marks of user with mpt, mtt and Assignment marks is:"+n+"%." +" User Passed.");
+    }
+    function marks(s1,s2) {
+        var s1 = document.getElementById(s1);
+        var s2 = document.getElementById(s2);
+        s2.innerHTML = "";
+        if(s1.value == "JEE"){
+            var optionArray = ["selectmodule|SelectModule","core java|Core Java","servlet-jsp|Servlet-JSP","spring|Spring"];
+        } else if(s1.value = ".NET"){
+            var optionArray = ["selectmodule|SelectModule","c#|C#","ado.net|ADO.NET","asp.net|ASP.NET"];
+        }
+        for(var option in optionArray){
+            var pair = optionArray[option].split("|");
+            var newOption = document.createElement("option");
+            newOption.value = pair[0];
+            newOption.innerHTML = pair[1];
+            s2.options.add(newOption);
+        }
+    }
+</script>
+
+</body>
+</html>
