@@ -11,7 +11,7 @@
     <form onsubmit="myFunction()" method="post">
         <h2>Module Score Calculation</h2>
     Enter Employee Number:<input type="number" min="100000" max="999999" maxlength="6" id="employee_num" name="empnum" required><br>
-    Enter Employee Name:<input type="text" id="employee_name" pattern="[A-Za-z]{30}" name="empname" required><br>
+    Enter Employee Name:<input type="text" id="employee_name" pattern="[A-Z]{1}[a-z]{}"maxlength="30" name="empname" required><br>
 
       Choose Domain:<select id="domainselect" name="domainselect" onchange="marks(this.id,'moduleselect')" required>
         <option value="">Select Domain</option>
